@@ -5,6 +5,10 @@
         Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None"
         AllowsTransparency="True" Background="Transparent">
 
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    
     <Border Background="WhiteSmoke" CornerRadius="30" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <!--Left panel width-->
@@ -16,21 +20,17 @@
             <!--Left Menu-->
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="80"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Button Margin="20 28 0 25" Style="{StaticResource topButton}">
-                    <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
-                </Button>
-
-                <Border Grid.Row="1" Background="MediumPurple" CornerRadius="0 50 0 30">
+                <Border Grid.Row="1" Background="DarkGray" CornerRadius="0 50 0 30">
                     <DockPanel>
-                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100"
+                        <Border Width="100" Height="100" Padding="3" Background="White" CornerRadius="1000"
                                 DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
                             <Ellipse>
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="" ImageSource="/Images/888108.jpg"/>
+                                    <ImageBrush ImageSource="/Images/888108.jpg"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>
@@ -40,7 +40,7 @@
                         <TextBlock Text="Explore currency of the future!" Foreground="LightGray" FontSize="13" FontWeight="SemiBold"
                                    DockPanel.Dock="Top" TextAlignment="Center"/>
 
-                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="Purple"/>
+                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="Gray"/>
 
                         <StackPanel DockPanel.Dock="Top">
                             <Button Style="{StaticResource menuButton}">
@@ -64,12 +64,6 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
-                            <StackPanel Orientation="Horizontal">
-                                <Icon:PackIconMaterial Kind="ExitRun" Style="{StaticResource menuButtonIcon}"/>
-                                <TextBlock Text="Exit"/>
-                            </StackPanel>
-                        </Button>
                     </DockPanel>
                 </Border>
             </Grid>
@@ -77,24 +71,57 @@
             <!--Main Section-->
             <Grid Grid.Column="1" Margin="30 20 20 20">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="58"/>
+                    <RowDefinition Height="75"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <!--Search-->
-                <Grid Width="300" HorizontalAlignment="Left">
-                    <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="LightGray" IsHitTestVisible="False"
-                           Panel.ZIndex="1" Text="Search" Visibility="Visible"/>
-                    <TextBox x:Name="txtSearch"/>
+                <!--Top button-->
+                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="LightGray" HorizontalAlignment="Right">
+                    <Icon:PackIconMaterial Kind="Close" />
+                </Button>
+                
+                <!--Page title-->
+                <TextBlock Text="Most popular cryptocurrencies" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left"
+                           Foreground="Black" />
+                
+                <!--Separator-->
+                <Separator Height="1" Grid.Row="2" Background="LightGray" Margin="0 -1 0 10"/>
+                
+                <!--Counter title-->
+                <TextBlock Text="Top 10" Grid.Row="3" FontSize="18" FontWeight="SemiBold"
+                           Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                
+                <!--Top10 DataGrid-->
+                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="4" x:Name="top10DataGrid">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="№" IsReadOnly="True" CanUserResize="False" Width="auto"/>
 
-                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center"
-                                           Margin="0 0 15 0" Foreground="LightSlateGray" HorizontalAlignment="Right"/>
-                </Grid>
+                        <DataGridTemplateColumn Header="Currency" IsReadOnly="True" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="Red">
+                                            <TextBlock Text="..." VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
+                                        </Border>
+
+                                        <TextBlock Text="..." VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Header="Digest" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Market Cap" IsReadOnly="True" Width="*"/>
+                        
+                        
+                        
+                    </DataGrid.Columns>
+                </DataGrid>
+
             </Grid>
 
         </Grid>
