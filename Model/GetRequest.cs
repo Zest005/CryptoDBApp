@@ -7,9 +7,6 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-//var request = new GetRequest("https://api.coincap.io/v2/assets");
-//request.Run();
-
 namespace CryptoDBApp.Model
 {
     public class GetRequest

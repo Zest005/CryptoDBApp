@@ -24,39 +24,6 @@ namespace CryptoDBApp.View
             InitializeComponent();
         }
 
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
-
-        }
-
-        private bool isMaximized = false;
-
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ClickCount == 2)
-            {
-                if (isMaximized)
-                {
-                    this.WindowState = WindowState.Normal;
-                    this.Width = 1080;
-                    this.Height = 720;
-
-                    isMaximized = false;
-                }
-                else
-                {
-                    this.WindowState = WindowState.Maximized;
-
-                    isMaximized = true;
-                }
-
-            }
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
@@ -67,11 +34,6 @@ namespace CryptoDBApp.View
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-
-        private void Button_IsMouseCaptureWithinChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
         }
     }
 }

@@ -8,7 +8,7 @@ namespace CryptoDBApp.Model
 {
     public class Cryptocurr
     {
-        public Cryptocurr(string id, int rank, string currency, string digest, double price, double change, double volume, double marketCapUsd)
+        public Cryptocurr(string id, int rank, string currency, string digest, double price, double change, double volume, double marketCap)
         {
             Id = id;
             Rank = rank;
@@ -17,7 +17,7 @@ namespace CryptoDBApp.Model
             Price = price;
             Change = change;
             Volume = volume;
-            MarketCapUsd = marketCapUsd;
+            MarketCap = marketCap;
         }
 
         public string Id { get; set; }
@@ -34,6 +34,6 @@ namespace CryptoDBApp.Model
 
         public double Volume { get; set; }
 
-        public double MarketCapUsd { get; set; }
+        public double MarketCap { get; set; }
     }
 }

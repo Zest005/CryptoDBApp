@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,9 @@ namespace CryptoDBApp.Model
 {
     public class DataWorker
     {
-        public void MyTestRequest()
+        public static Cryptocurr GetCurrency(string id, int rank, string currency, string digest, double price, double change, double volume, double marketCap)
         {
-            var request = new GetRequest("https://api.coincap.io/v2/assets");
-            request.Run();
+            return new Cryptocurr(id, rank, currency, digest, price, change, volume, marketCap);
         }
-        // заполнить список Cryptocurr данными из API
-
-        // выбрать top 10 по RANK и заполнить список CryptoCurrTop
-
-        // 
     }
 }
