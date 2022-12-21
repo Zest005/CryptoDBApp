@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None"
         AllowsTransparency="True" Background="Transparent">
 
     <Window.Resources>
@@ -94,16 +94,6 @@
                         <DataGridTextColumn Header="Change" IsReadOnly="True" Width="*" Binding="{Binding Change}"/>
                         <DataGridTextColumn Header="Volume" IsReadOnly="True" Width="*" Binding="{Binding Volume}"/>
                         <DataGridTextColumn Header="Market Cap" IsReadOnly="True" Width="*" Binding="{Binding MarketCap}"/>
-
-                        <DataGridTemplateColumn IsReadOnly="True" Width="auto">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Style="{StaticResource gridBuyButton}" Margin="5 0 0 0">
-                                        <Icon:PackIconMaterial Kind="Bucket"/>
-                                    </Button>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
 
