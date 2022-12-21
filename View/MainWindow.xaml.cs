@@ -1,4 +1,5 @@
 ﻿using CryptoDBApp.Model;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Eventing.Reader;
@@ -66,6 +67,15 @@ namespace CryptoDBApp.View
             request.Run();
 
             var response = request.Response;
+
+            var json = JObject.Parse(response);
+
+            var data = json["data"];
+
+            foreach (var item in data)
+            {
+                var symbol = item["symbol"];
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
