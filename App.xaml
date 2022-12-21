@@ -83,11 +83,11 @@
 
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" Value="White" TargetName="border"/>
+                                <Setter Property="BorderBrush" Value="Black" TargetName="border"/>
                             </Trigger>
                             
                             <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="White" TargetName="border"/>
+                                <Setter Property="BorderBrush" Value="DarkGray" TargetName="border"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

@@ -56,5 +56,22 @@ namespace CryptoDBApp.View
 
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Hide();
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Button_IsMouseCaptureWithinChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 }

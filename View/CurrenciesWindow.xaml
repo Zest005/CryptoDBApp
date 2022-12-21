@@ -9,7 +9,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
 
-    <Border Background="WhiteSmoke" CornerRadius="30" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border Background="WhiteSmoke" CornerRadius="30">
         <Grid>
             <!--Left panel width-->
             <Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
                                 DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
                             <Ellipse>
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/Images/888108.jpg"/>
+                                    <ImageBrush ImageSource="/View/888108.jpg"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>
@@ -43,7 +43,7 @@
                         <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="Gray"/>
 
                         <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Button_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ViewDashboardOutline" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Main"/>
@@ -73,7 +73,7 @@
                 </Grid.RowDefinitions>
 
                 <!--Top button-->
-                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="LightGray" HorizontalAlignment="Right" Name="closeButton">
+                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="LightGray" HorizontalAlignment="Right" Name="closeButton" Click="closeButton_Click">
                     <Icon:PackIconMaterial Kind="Close" />
                 </Button>
 
@@ -129,7 +129,7 @@
                             <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pageButtonIcon}"/>
                         </Button>
 
-                        <Rectangle Width="1" Fill="WhiteSmoke" Margin="3 7"/>
+                        <Rectangle Width="1" Fill="LightGray" Margin="3 7"/>
 
                         <Button Style="{StaticResource pageButton}" Content="1"/>
                         <Button Style="{StaticResource pageButton}" Content="2"/>
@@ -141,17 +141,17 @@
                         <Button Style="{StaticResource pageButton}" Content="8"/>
                         <Button Style="{StaticResource pageButton}" Content="9"/>
 
+                        <Rectangle Width="1" Fill="LightGray" Margin="3 7"/>
+
                         <Button Style="{StaticResource pageButton}">
                             <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pageButtonIcon}"/>
                         </Button>
-
-                        <Rectangle Width="1" Fill="WhiteSmoke" Margin="3 7"/>
                     </StackPanel>
                 </Border>
 
                 <!--Search-->
-                <Grid Width="250" Height="50" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="3">
-                    <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="Gray" IsHitTestVisible="False"
+                <Grid Width="250" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="3">
+                    <TextBlock Width="190" Margin="20 0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray" IsHitTestVisible="False"
                            Panel.ZIndex="1" Text="Search" Visibility="{Binding ElementName=txtSearch,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
 
                     <TextBox x:Name="txtSearch" Style="{StaticResource textBoxSearch}"/>
