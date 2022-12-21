@@ -72,7 +72,7 @@
                 </Grid.RowDefinitions>
 
                 <!--Top button-->
-                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="LightGray" HorizontalAlignment="Right">
+                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="LightGray" HorizontalAlignment="Right" Click="Button_Click">
                     <Icon:PackIconMaterial Kind="Close" />
                 </Button>
 

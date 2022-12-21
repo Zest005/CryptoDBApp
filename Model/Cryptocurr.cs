@@ -8,34 +8,32 @@ namespace CryptoDBApp.Model
 {
     public class Cryptocurr
     {
-        public Cryptocurr(string id, string name, int rank, string symbol, double marketCapUsd, double priceUsd, double changePercent24Hr)
+        public Cryptocurr(string id, int rank, string currency, string digest, double price, double change, double volume, double marketCapUsd)
         {
             Id = id;
-            Name = name;
             Rank = rank;
-            Symbol = symbol;
+            Currency = currency;
+            Digest = digest;
+            Price = price;
+            Change = change;
+            Volume = volume;
             MarketCapUsd = marketCapUsd;
-            PriceUsd = priceUsd;
-            ChangePercent24Hr = changePercent24Hr;
         }
 
         public string Id { get; set; }
 
-        public string Name { get; set; }
-
         public int Rank { get; set; }
 
-        public string Symbol { get; set; }
-        
+        public string Currency { get; set; }
+
+        public string Digest { get; set; }
+
+        public double Price { get; set; }
+
+        public double Change { get; set; }
+
+        public double Volume { get; set; }
+
         public double MarketCapUsd { get; set; }
-
-        public double PriceUsd { get; set; }
-        
-        public double ChangePercent24Hr { get; set; }
-
-        public static Cryptocurr CreateCryptocurr()
-        {
-            return new Cryptocurr();
-        }
     }
 }

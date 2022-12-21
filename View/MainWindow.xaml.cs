@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptoDBApp.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
@@ -57,6 +58,19 @@ namespace CryptoDBApp.View
                 }
 
             }
+        }
+
+        public void MyTestRequest()
+        {
+            var request = new GetRequest("https://api.coincap.io/v2/assets");
+            request.Run();
+
+            var response = request.Response;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MyTestRequest();
         }
     }
 }
