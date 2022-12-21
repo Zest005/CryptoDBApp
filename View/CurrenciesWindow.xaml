@@ -109,7 +109,7 @@
                         <DataGridTextColumn Header="Volume" IsReadOnly="True" Width="*" Binding="{Binding Volume}"/>
                         <DataGridTextColumn Header="Market Cap" IsReadOnly="True" Width="*" Binding="{Binding MarketCap}"/>
 
-                        <DataGridTemplateColumn Header="buy" IsReadOnly="True" Width="auto">
+                        <DataGridTemplateColumn IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Style="{StaticResource gridBuyButton}" Margin="5 0 0 0">
