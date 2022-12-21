@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace CryptoDBApp.Model
 {
-    public class Cryptocurr
+    public class CryptocurrShortList
     {
-        public Cryptocurr(string id, int rank, string currency, string digest, double price, double change, double volume, double marketCap)
+        public CryptocurrShortList(string id, int rank, string currency, string digest, double price, double marketCap)
         {
             Id = id;
             Rank = rank;
             Currency = currency;
             Digest = digest;
             Price = price;
-            Change = change;
-            Volume = volume;
             MarketCap = marketCap;
         }
 
@@ -29,10 +27,6 @@ namespace CryptoDBApp.Model
         public string Digest { get; set; }
 
         public double Price { get; set; }
-
-        public double Change { get; set; }
-
-        public double Volume { get; set; }
 
         public double MarketCap { get; set; }
     }

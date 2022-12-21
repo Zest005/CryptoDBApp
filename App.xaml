@@ -85,7 +85,7 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderBrush" Value="Black" TargetName="border"/>
                             </Trigger>
-                            
+
                             <Trigger Property="IsKeyboardFocused" Value="True">
                                 <Setter Property="BorderBrush" Value="DarkGray" TargetName="border"/>
                             </Trigger>
@@ -93,30 +93,6 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
-
-        <Style x:Key="pageButton" TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="Gray"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="Margin" Value="1 0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="5" Padding="10 5">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 1"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Gray"/>
-                    <Setter Property="Foreground" Value="White"/>
-                </Trigger>
-            </Style.Triggers>
         </Style>
 
         <Style x:Key="pageButtonIcon" TargetType="Icon:PackIconMaterial">

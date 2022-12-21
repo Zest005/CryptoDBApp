@@ -37,7 +37,7 @@ namespace CryptoDBApp.View
         {
             CurrenciesWindow currenciesWindow = new CurrenciesWindow();
             currenciesWindow.Show();
-            Hide();
+            Close();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace CryptoDBApp.View
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-            Hide();
+            Close();
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
