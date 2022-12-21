@@ -45,28 +45,64 @@ namespace CryptoDBApp.ViewModel
             }
         }
 
-        // buttons for MainWindow
-        private void MainWindowClosing()
+        // relaycommand
+        private RelayCommand openCurrWindow;
+        public RelayCommand OpenCurrsWindow
         {
-            Application.Current.Shutdown();
+            get
+            {
+                return openCurrWindow ?? new RelayCommand(obj =>
+                {
+                    OpeningCurrenciesWindow();
+                });
+            }
         }
 
-        private void OpenCurrenciesWindow(Window window)
+        private RelayCommand openMainWindow;
+        public RelayCommand OpenMainWindow
         {
-            CurrenciesWindow currenciesWindow = new CurrenciesWindow();
+            get
+            {
+                return openMainWindow ?? new RelayCommand(obj =>
+                {
+                    OpeningMainWindow();
+                });
+            }
+        }
+
+        private RelayCommand closeApp;
+        public RelayCommand CloseApp
+        {
+            get
+            {
+                return closeApp ?? new RelayCommand(obj =>
+                {
+                    CloseApplication();
+                });
+            }
+        }
+
+        // buttons
+
+        private void OpeningCurrenciesWindow()
+        {
+            var currenciesWindow = new CurrenciesWindow();
+            currenciesWindow.Owner = Application.Current.MainWindow;
+            currenciesWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             currenciesWindow.Show();
-            window.Close();
+            App.Current.Windows[0].Hide();
         }
 
-        // buttons for CurrenciesWindow
-        private void OpenMainWindow(Window window)
+        private void OpeningMainWindow()
         {
-            MainWindow mainWindow = new MainWindow();
+            var mainWindow = new MainWindow();
+            mainWindow.Owner = Application.Current.MainWindow;
+            mainWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             mainWindow.Show();
-            window.Close();
+            App.Current.Windows[0].Hide();
         }
 
-        private void CurrenciesWindowClosing()
+        private void CloseApplication()
         {
             Application.Current.Shutdown();
         }
