@@ -1,4 +1,5 @@
 ﻿using CryptoDBApp.Model;
+using CryptoDBApp.ViewModel;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.ObjectModel;
@@ -26,18 +27,7 @@ namespace CryptoDBApp.View
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            CurrenciesWindow currenciesWindow = new CurrenciesWindow();
-            currenciesWindow.Show();
-            Close();
+            DataContext = new DataManageVM();
         }
     }
 }

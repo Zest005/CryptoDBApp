@@ -50,7 +50,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}" Click="Button_Click_1">
+                            <Button Style="{StaticResource menuButton}" Command="{Binding OpenCurrenciesWindow}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="CurrencyBtc" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Currencies"/>
@@ -72,7 +72,7 @@
                 </Grid.RowDefinitions>
 
                 <!--Top button-->
-                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="LightGray" HorizontalAlignment="Right" Click="Button_Click">
+                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="LightGray" HorizontalAlignment="Right" Command="{Binding MainWindowClosing}">
                     <Icon:PackIconMaterial Kind="Close" />
                 </Button>
 
@@ -88,7 +88,7 @@
                            Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
                 <!--Top10 DataGrid-->
-                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="4" x:Name="top10DataGrid">
+                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ItemsSource="{Binding TopCryptocurrs}"  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="4" x:Name="top10DataGrid">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="№" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding RankTop}"/>
                         <DataGridTextColumn Header="Currency" CanUserResize="False" IsReadOnly="True" Width="*" Binding="{Binding CurrencyTop}"/>

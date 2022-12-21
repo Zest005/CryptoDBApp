@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptoDBApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,18 +23,7 @@ namespace CryptoDBApp.View
         public CurrenciesWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Close();
-        }
-
-        private void closeButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
+            DataContext = new DataManageVM();
         }
     }
 }

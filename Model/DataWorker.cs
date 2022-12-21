@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json.Linq;
+using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CryptoDBApp.Model
 {
@@ -27,16 +29,19 @@ namespace CryptoDBApp.Model
             var json = JObject.Parse(response);
             var data = json["data"];
 
+            var tempList = new List<CryptocurrFullList>();
             foreach (var item in data)
             {
-                FullCryptocurrencies.Add(DataWorker.GetFullCurrency(item["id"].ToString(),
-                                                                    (int)item["rank"],
-                                                                    item["name"].ToString(),
-                                                                    item["symbol"].ToString(),
-                                                                    (double)item["price"],
-                                                                    (double)item["changePercent24Hr"],
-                                                                    (double)item["volumeUsd24Hr"],
-                                                                    (double)item["marketCapUsd"]));
+                string id = (item["id"].ToObject<string>()).ToString();
+                int rank = (int)item["rank"].ToObject<int>();
+                string name = (item["name"].ToObject<string>()).ToString();
+                string symbol = (item["symbol"].ToObject<string>()).ToString();
+                double price = (double)item["priceUsd"].ToObject<double>();
+                double changePercent24Hr = (double)item["changePercent24Hr"].ToObject<double>();
+                double volumeUsd24Hr = (double)item["volumeUsd24Hr"].ToObject<double>();
+                double marketCapUsd = (double)item["marketCapUsd"].ToObject<double>();
+
+                FullCryptocurrencies.Add(DataWorker.GetFullCurrency(id, rank, name, symbol, price, changePercent24Hr, volumeUsd24Hr, marketCapUsd));
             }
 
             return FullCryptocurrencies;
@@ -59,15 +64,25 @@ namespace CryptoDBApp.Model
 
             var json = JObject.Parse(response);
             var data = json["data"];
+            int checker = 1;
 
             foreach (var item in data)
             {
-                ShortCryptocurrencies.Add(DataWorker.GetShortCurrency(item["id"].ToString(),
-                                                                      (int)item["rank"],
-                                                                      item["name"].ToString(),
-                                                                      item["symbol"].ToString(),
-                                                                      (double)item["price"],
-                                                                      (double)item["marketCapUsd"]));
+                if (checker > 10)
+                {
+                    break;
+                }
+
+                string id = (item["id"].ToObject<string>()).ToString();
+                int rank = (int)item["rank"].ToObject<int>();
+                string name = (item["name"].ToObject<string>()).ToString();
+                string symbol = (item["symbol"].ToObject<string>()).ToString();
+                double price = (double)item["priceUsd"].ToObject<double>();
+                double marketCapUsd = (double)item["marketCapUsd"].ToObject<double>();
+
+                ShortCryptocurrencies.Add(DataWorker.GetShortCurrency(id, rank, name, symbol, price, marketCapUsd));
+
+                checker++;
             }
 
             return ShortCryptocurrencies;

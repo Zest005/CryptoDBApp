@@ -43,7 +43,7 @@
                         <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="Gray"/>
 
                         <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}" Click="Button_Click">
+                            <Button Style="{StaticResource menuButton}" Command="{Binding OpenMainWindow}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ViewDashboardOutline" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Main"/>
@@ -73,7 +73,7 @@
                 </Grid.RowDefinitions>
 
                 <!--Top button-->
-                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="LightGray" HorizontalAlignment="Right" Name="closeButton" Click="closeButton_Click">
+                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="LightGray" HorizontalAlignment="Right" Name="closeButton" Command="{Binding CurrenciesWindowClosing}">
                     <Icon:PackIconMaterial Kind="Close" />
                 </Button>
 
@@ -85,7 +85,7 @@
                 <Separator Height="1" Grid.Row="2" Background="LightGray" Margin="0 -1 0 10"/>
 
                 <!--CurrDataGrid-->
-                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="4" x:Name="CurrDataGrid">
+                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ItemsSource="{Binding FullCryptocurrs}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="4" x:Name="CurrDataGrid">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="№" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Rank}"/>
                         <DataGridTextColumn Header="Currency" CanUserResize="False" IsReadOnly="True" Width="*" Binding="{Binding Currency}"/>
