@@ -2,6 +2,7 @@
 {
     public class CryptocurrFullList
     {
+        // For All Currencies List
         public CryptocurrFullList(string id, int rank, string currency, string digest, double price, double change, double volume, double marketCap)
         {
             Id = id;

@@ -8,8 +8,8 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
-    
-    <Border Background="WhiteSmoke" CornerRadius="30">
+
+    <Border Background="WhiteSmoke" CornerRadius="30" MouseDown="Window_MouseDown">
         <Grid>
             <!--Left panel width-->
             <Grid.ColumnDefinitions>

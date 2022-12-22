@@ -5,7 +5,7 @@ namespace CryptoDBApp.Model
 {
     public static class DataWorker
     {
-        // all currs
+        #region All Currencies List
         public static CryptocurrFullList GetFullCurrency(string id, int rank, string currency, string digest, double price, double change, double volume, double marketCap)
         {
             return new CryptocurrFullList(id, rank, currency, digest, price, change, volume, marketCap);
@@ -23,7 +23,6 @@ namespace CryptoDBApp.Model
             var json = JObject.Parse(response);
             var data = json["data"];
 
-            var tempList = new List<CryptocurrFullList>();
             foreach (var item in data)
             {
                 string id = (item["id"].ToObject<string>()).ToString();
@@ -40,8 +39,9 @@ namespace CryptoDBApp.Model
 
             return FullCryptocurrencies;
         }
+        #endregion
 
-        // top10
+        #region TOP10 List
         public static CryptocurrShortList GetShortCurrency(string id, int rank, string currency, string digest, double price, double marketCap)
         {
             return new CryptocurrShortList(id, rank, currency, digest, price, marketCap);
@@ -81,5 +81,6 @@ namespace CryptoDBApp.Model
 
             return ShortCryptocurrencies;
         }
+        #endregion
     }
 }

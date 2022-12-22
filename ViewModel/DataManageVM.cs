@@ -1,17 +1,14 @@
 ﻿using CryptoDBApp.Model;
 using CryptoDBApp.View;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Shell;
 
 namespace CryptoDBApp.ViewModel
 {
     public class DataManageVM : INotifyPropertyChanged
     {
-        // all currs
+        #region All Currencies List
         private List<CryptocurrFullList> fullCryptocurrs = DataWorker.GetFullList();
         public List<CryptocurrFullList> FullCryptocurrs
         { 
@@ -25,8 +22,9 @@ namespace CryptoDBApp.ViewModel
                 NotifyPropertyChanged("FullCryptocurrs");
             }
         }
+        #endregion
 
-        // temp list for search
+        #region Temp List for Search
         private List<CryptocurrFullList> tempList = DataWorker.GetFullList();
         public List<CryptocurrFullList> TempList
         {
@@ -39,8 +37,9 @@ namespace CryptoDBApp.ViewModel
                 tempList = value;
             }
         }
+        #endregion
 
-        // top10
+        #region TOP10 List
         private List<CryptocurrShortList> topCryptocurrs = DataWorker.GetShortList();
 
         public List<CryptocurrShortList> TopCryptocurrs
@@ -55,8 +54,9 @@ namespace CryptoDBApp.ViewModel
                 NotifyPropertyChanged("TopCryptocurrs");
             }
         }
+        #endregion
 
-        // relaycommand
+        #region Relay Commands
         private RelayCommand openCurrWindow;
         public RelayCommand OpenCurrsWindow
         {
@@ -93,8 +93,6 @@ namespace CryptoDBApp.ViewModel
             }
         }
 
-        
-
         private RelayCommand searchComm;
         public RelayCommand SearchComm
         {
@@ -106,7 +104,9 @@ namespace CryptoDBApp.ViewModel
                 });
             }
         }
+        #endregion
 
+        #region Searching
         private string textSearch;
         public string TextSearch
         {
@@ -145,8 +145,9 @@ namespace CryptoDBApp.ViewModel
                 break;
             }
         }
+        #endregion
 
-        // buttons
+        #region Windows buttons
         private void OpeningCurrenciesWindow()
         {
             var currenciesWindow = new CurrenciesWindow();
@@ -169,8 +170,9 @@ namespace CryptoDBApp.ViewModel
         {
             Application.Current.Shutdown();
         }
+        #endregion
 
-        // NotifyProp
+        #region Notify Property
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void NotifyPropertyChanged(string propertyName)
@@ -180,5 +182,6 @@ namespace CryptoDBApp.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        #endregion
     }
 }

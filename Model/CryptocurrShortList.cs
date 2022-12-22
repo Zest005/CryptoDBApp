@@ -2,6 +2,7 @@
 {
     public class CryptocurrShortList
     {
+        // For Top10 List
         public CryptocurrShortList(string id, int rank, string currency, string digest, double price, double marketCap)
         {
             Id = id;
