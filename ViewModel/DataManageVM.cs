@@ -1,8 +1,11 @@
 ﻿using CryptoDBApp.Model;
 using CryptoDBApp.View;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Shell;
 
 namespace CryptoDBApp.ViewModel
 {
@@ -20,6 +23,20 @@ namespace CryptoDBApp.ViewModel
             {
                 fullCryptocurrs = value;
                 NotifyPropertyChanged("FullCryptocurrs");
+            }
+        }
+
+        // temp list for search
+        private List<CryptocurrFullList> tempList = DataWorker.GetFullList();
+        public List<CryptocurrFullList> TempList
+        {
+            get
+            {
+                return tempList;
+            }
+            set
+            {
+                tempList = value;
             }
         }
 
@@ -76,8 +93,60 @@ namespace CryptoDBApp.ViewModel
             }
         }
 
-        // buttons
+        
 
+        private RelayCommand searchComm;
+        public RelayCommand SearchComm
+        {
+            get
+            {
+                return searchComm ?? new RelayCommand(obj =>
+                {
+                    SearchingInList();
+                });
+            }
+        }
+
+        private string textSearch;
+        public string TextSearch
+        {
+            get
+            {
+                return this.textSearch;
+            }
+            set
+            {
+                if (!string.Equals(this.textSearch, value))
+                {
+                    this.textSearch = value;
+                }
+            }
+        }
+
+        private void SearchingInList()
+        {
+            List<CryptocurrFullList> SearchCrypto = new List<CryptocurrFullList>();
+
+            foreach (var item in TempList)
+            {
+                if (item.Id == TextSearch || item.Currency == TextSearch || item.Digest == TextSearch)
+                    SearchCrypto.Add(item);
+                else if (TextSearch == "" && FullCryptocurrs.Count < 100)
+                {
+                    FullCryptocurrs = TempList;
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+
+                FullCryptocurrs = SearchCrypto;
+                break;
+            }
+        }
+
+        // buttons
         private void OpeningCurrenciesWindow()
         {
             var currenciesWindow = new CurrenciesWindow();
